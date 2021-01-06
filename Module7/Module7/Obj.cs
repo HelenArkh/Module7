@@ -11,13 +11,24 @@ namespace Module7
 		private int length;
 		private int count;
 
-		public Obj(string name, string ownerName, int objLength, int count)
+		public int Value;
+
+		public static Obj operator +(Obj a, Obj b)
 		{
-			this.name = name;
-			owner = ownerName;
-			length = objLength;
-			this.count = count;
+			return new Obj
+			{
+				Value = a.Value + b.Value
+			};
 		}
+		public static Obj operator -(Obj a, Obj b)
+		{
+			return new Obj
+			{
+				Value = a.Value - b.Value
+			};
+		}
+
+		
 	}
 
 	class BaseClass
@@ -28,13 +39,44 @@ namespace Module7
 		{
 			Name = name;
 		}
+
+		public virtual int Counter
+		{
+			get;
+			set;
+		}
+
+		public virtual void Display()
+		{
+			Console.WriteLine("Метод класса BaseClass");
+		}
 	}
 
 	class DerivedClass : BaseClass
 	{
 		public string Description;
 
-		public int Counter;
+		private int counter;
+
+		public override int Counter 
+		{
+			get
+			{
+				return counter;
+			}
+			set
+			{
+				if (value < 0)
+				{
+					Console.WriteLine("Нельзя заносить числа меньше 0");
+				}
+				else
+				{
+					counter = value;
+				}
+			}
+		}
+
 		public DerivedClass(string name, string description) : base(name)
 		{
 			Description = description;
@@ -43,6 +85,12 @@ namespace Module7
 		public DerivedClass(string name, string description, int counter) : this(name, description)
 		{
 			Counter = counter;
+		}
+
+		public override void Display()
+		{
+			base.Display();
+			Console.WriteLine("Метод класса DerivedClass");
 		}
 
 	}

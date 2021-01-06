@@ -6,26 +6,17 @@ namespace Module7
 {
     class Car
     {
-		public double Fuel;
-
 		public int Mileage;
 
 		public Car()
 		{
-			Fuel = 50;
 			Mileage = 0;
 		}
 
-		public void Move()
+		public virtual void Move()
 		{
-			// Move a kilometer
+			Console.WriteLine("Вызван метод Move класса Car");
 			Mileage++;
-			Fuel -= 0.5;
-		}
-
-		public void FillTheCar()
-		{
-			Fuel = 50;
 		}
 	}
 	enum FuelType
@@ -37,6 +28,32 @@ namespace Module7
 	class HybridCar : Car
 	{
 		public FuelType FuelType;
+
+		public double Gas;
+
+		public double Electricity;
+
+		public HybridCar()
+		{
+			Electricity = 50;
+			Gas = 50;
+		}
+
+		public override void Move()
+		{
+			base.Move();
+			Console.WriteLine("Вызван метод Move класса HybridCar");
+
+			switch (FuelType)
+			{
+				case FuelType.Gas:
+					Gas -= 0.5;
+					break;
+				case FuelType.Electricity:
+					Electricity -= 0.5;
+					break;
+			}
+		}
 
 		public void ChangeFuelType(FuelType type)
 		{

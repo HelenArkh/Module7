@@ -6,11 +6,33 @@ namespace Module7
     {
         static void Main(string[] args)
         {
-            Car car = new HybridCar();
-            car.Move();
+            var array = new Book[]
+  {
+    new Book
+    {
+      Name = "Мастер и Маргарита",
+      Author = "М.А. Булгаков"
+    },
+    new Book
+    {
+      Name = "Отцы и дети",
+      Author = "И.С. Тургенев"
+    },
+  };
+            BookCollection collection = new BookCollection(array);
 
-            HybridCar hybrid = new HybridCar();
-            
+            Console.ReadKey();
+
+            Book book = collection[1];
+            book = collection[-1];
+            book = collection[4];
+
+            Console.ReadKey();
+
+            book = collection["Мастер и Маргарита"];
+
+            Console.ReadKey();
+
         }
     }
 }
