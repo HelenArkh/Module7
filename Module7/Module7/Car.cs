@@ -4,60 +4,64 @@ using System.Text;
 
 namespace Module7
 {
-    class Car
+    class Car<TEngine> where TEngine : TypeEngine
     {
-		public int Mileage;
+        public TEngine Engine;
 
-		public Car()
-		{
-			Mileage = 0;
-		}
+        public virtual void ChangePart<TPart>(TPart newPart) where TPart : TypePart
+            {
 
-		public virtual void Move()
-		{
-			Console.WriteLine("Вызван метод Move класса Car");
-			Mileage++;
-		}
-	}
-	enum FuelType
-	{
-		Gas = 0,
-		Electricity
-	}
+            }
+    }
 
-	class HybridCar : Car
-	{
-		public FuelType FuelType;
+    class ElectricCar: Car<ElectricEngine>
+    {
+        public override void ChangePart<TPart>(TPart newPart)
+        {
 
-		public double Gas;
+        }
+    }
 
-		public double Electricity;
+    class GasCar:Car<GasEngine>
+    {
+        public override void ChangePart<TPart>(TPart newPart)
+        {
 
-		public HybridCar()
-		{
-			Electricity = 50;
-			Gas = 50;
-		}
+        }
+    }
 
-		public override void Move()
-		{
-			base.Move();
-			Console.WriteLine("Вызван метод Move класса HybridCar");
+    abstract class TypeEngine
+    {
 
-			switch (FuelType)
-			{
-				case FuelType.Gas:
-					Gas -= 0.5;
-					break;
-				case FuelType.Electricity:
-					Electricity -= 0.5;
-					break;
-			}
-		}
+    }
+	
+	class ElectricEngine: TypeEngine
+    {
 
-		public void ChangeFuelType(FuelType type)
-		{
-			FuelType = type;
-		}
-	}
+    }
+
+	class GasEngine: TypeEngine
+    {
+
+    }
+
+    abstract class TypePart
+    {
+
+    }
+
+    class Battery: TypePart
+    {
+
+    }
+
+    class Differential: TypePart
+    {
+
+    }
+
+    class Wheel: TypePart
+    {
+
+    }
 }

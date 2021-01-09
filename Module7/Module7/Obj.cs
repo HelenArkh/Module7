@@ -20,6 +20,11 @@ namespace Module7
 			MaxValue = 2000;
 		}
 
+		public void Display<T>(T param)
+		{
+			Console.WriteLine(param.ToString());
+		}
+
 
 	}
 

@@ -6,16 +6,23 @@ namespace Module7
     {
         static void Main(string[] args)
         {
-            int num1 = 7;
-            int num2 = -13;
-            int num3 = 0;
+            Obj obj = new Obj();
+            obj.Display(345);
 
-            Console.WriteLine(num1.GetNegative()); //-7
-            Console.WriteLine(num1.GetPositive()); //7
-            Console.WriteLine(num2.GetNegative()); //-13
-            Console.WriteLine(num2.GetPositive()); //13
-            Console.WriteLine(num3.GetNegative()); //0
-            Console.WriteLine(num3.GetPositive()); //0
+            int num1 = 4;
+            int num2 = 10;
+            Swap(ref num1, ref num2);
+
+            Console.WriteLine("{0} {1}", num1, num2);
+
+            Console.ReadKey();
+        }
+
+        public static void Swap<T>(ref T x, ref T y)
+        {
+            T t = x;
+            x = y;
+            y = t;
         }
     }
 }
