@@ -6,29 +6,21 @@ namespace Module7
 {
     class Obj
     {
-		private string name;
-		private string owner;
-		private int length;
-		private int count;
+		public string Name;
+		public string Description;
 
-		public int Value;
+		public static string Parent;
+		public static int DaysInWeek;
+		public static int MaxValue;
 
-		public static Obj operator +(Obj a, Obj b)
+		static Obj()
 		{
-			return new Obj
-			{
-				Value = a.Value + b.Value
-			};
-		}
-		public static Obj operator -(Obj a, Obj b)
-		{
-			return new Obj
-			{
-				Value = a.Value - b.Value
-			};
+			Parent = "System.Object";
+			DaysInWeek = 7;
+			MaxValue = 2000;
 		}
 
-		
+
 	}
 
 	class BaseClass

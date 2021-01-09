@@ -6,33 +6,16 @@ namespace Module7
     {
         static void Main(string[] args)
         {
-            var array = new Book[]
-  {
-    new Book
-    {
-      Name = "Мастер и Маргарита",
-      Author = "М.А. Булгаков"
-    },
-    new Book
-    {
-      Name = "Отцы и дети",
-      Author = "И.С. Тургенев"
-    },
-  };
-            BookCollection collection = new BookCollection(array);
+            int num1 = 7;
+            int num2 = -13;
+            int num3 = 0;
 
-            Console.ReadKey();
-
-            Book book = collection[1];
-            book = collection[-1];
-            book = collection[4];
-
-            Console.ReadKey();
-
-            book = collection["Мастер и Маргарита"];
-
-            Console.ReadKey();
-
+            Console.WriteLine(num1.GetNegative()); //-7
+            Console.WriteLine(num1.GetPositive()); //7
+            Console.WriteLine(num2.GetNegative()); //-13
+            Console.WriteLine(num2.GetPositive()); //13
+            Console.WriteLine(num3.GetNegative()); //0
+            Console.WriteLine(num3.GetPositive()); //0
         }
     }
 }
